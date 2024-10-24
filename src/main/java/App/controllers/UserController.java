@@ -1,12 +1,11 @@
 package App.controllers;
 
+import App.model.User;
 import App.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/users")
@@ -26,8 +25,31 @@ public class UserController {
 
     @GetMapping("/user")
     public String getUser(@RequestParam("id") int id, Model model) {
-        model.addAttribute(userService.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         return "users/showUser";
     }
+
+    @GetMapping("/new")
+    public String newUser(@ModelAttribute("user") User user) {
+        return "users/new";
+    }
+
+    @PostMapping()
+    public String createUser(@ModelAttribute("user") User user) {
+        userService.addUser(user);
+        return "redirect:/users";
+    }
+
+    @GetMapping("user/edit")
+    public String editUser(@RequestParam("id") int id, Model model) {
+        model.addAttribute(userService.getUserById(id));
+        return "users/edit";
+    }
+
+//    @PostMapping("/user")
+//    public String updateUser(@ModelAttribute("user") User user) {
+//        userService.updateUser(user.getId());
+//        return "redirect:/users";
+//    }
 
 }

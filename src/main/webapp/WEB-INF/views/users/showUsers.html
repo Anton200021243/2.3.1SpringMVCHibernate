@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Users</title>
 </head>
 <body>
 
@@ -10,6 +10,11 @@
     <a th:href="@{/users/user(id=${user.getId()})}"
        th:text="${user.getId() + ': ' + user.getUsername()}">user</a>
 </div>
+
+<br/>
+<hr/>
+
+<a href="/users/new">Create new user</a>
 
 </body>
 </html>
