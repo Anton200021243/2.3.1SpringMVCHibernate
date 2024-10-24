@@ -10,5 +10,9 @@
 <p th:text="${user.getId()}">VALUE</p>
 
 <a th:href="@{/users/user/edit(id=${user.getId()})}">Edit</a>
+<br/>
+<a th:href="@{/users/user/delete(id=${user.getId()})}">delete</a>
+</form>
+
 </body>
 </html>

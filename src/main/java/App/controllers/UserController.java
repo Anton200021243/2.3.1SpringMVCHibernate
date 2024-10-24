@@ -47,9 +47,15 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public String updateUser(@ModelAttribute("user") User user) {
-        userService.updateUser(user.getId(), user);
+    public String updateUser(@ModelAttribute("user") User user,
+                             @RequestParam("id") int id) {
+        userService.updateUser(id, user);
         return "redirect:/users";
     }
 
+    @GetMapping("/user/delete")
+    public String deleteUser(@RequestParam("id") int id) {
+        userService.deleteUser(id);
+        return "redirect:/users";
+    }
 }
