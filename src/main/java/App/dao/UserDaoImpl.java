@@ -39,10 +39,4 @@ public class UserDaoImpl implements UserDao {
     public void deleteUser(int id) {
 
     }
-
-    @Override
-    @Transactional(readOnly = true)
-    public User getUser(int id) {
-        return null;
-    }
 }
