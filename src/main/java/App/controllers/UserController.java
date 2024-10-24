@@ -42,14 +42,14 @@ public class UserController {
 
     @GetMapping("user/edit")
     public String editUser(@RequestParam("id") int id, Model model) {
-        model.addAttribute(userService.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         return "users/edit";
     }
 
-//    @PostMapping("/user")
-//    public String updateUser(@ModelAttribute("user") User user) {
-//        userService.updateUser(user.getId());
-//        return "redirect:/users";
-//    }
+    @PostMapping("/user")
+    public String updateUser(@ModelAttribute("user") User user) {
+        userService.updateUser(user.getId(), user);
+        return "redirect:/users";
+    }
 
 }
