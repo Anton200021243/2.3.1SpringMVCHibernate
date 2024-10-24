@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/users}" th:object="${user}">
+<form th:method="POST" th:action="@{/users/user(id=${user.getId()})}" th:object="${user}">
     <input type="hidden" th:name="id" th:field="*{id}" th:value ="${user.getId()}"/>
 
     <label for="name">Enter name: </label>
