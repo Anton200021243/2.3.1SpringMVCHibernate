@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    UserDao userDao;
+    private final UserDao userDao;
 
     @Autowired
     public UserServiceImpl(UserDao userDao) {
@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
         userDao.deleteUser(id);
     }
 
+    @Override
     public User getUserById(int id) {
         return userDao.getUserById(id);
     }

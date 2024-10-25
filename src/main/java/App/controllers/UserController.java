@@ -18,19 +18,20 @@ public class UserController {
     }
 
     @GetMapping()
-    public String getAllUsers(Model model) {
+    public String showAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users/showUsers";
     }
 
     @GetMapping("/user")
-    public String getUser(@RequestParam("id") int id, Model model) {
+    public String showUser(@RequestParam("id") int id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "users/showUser";
     }
 
+
     @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
+    public String createNewUser(@ModelAttribute("user") User user) {
         return "users/new";
     }
 
